@@ -137,3 +137,12 @@ Process for group project:
 * create a visual style guide
 * Code style guide in Rails: app/assets/stylesheets/base (base.scss and _colors.scss)
 * Add page specific styles in page specific SCSS file
+*sass-lang.com but use SCSS file!! 
+* can't use Bootstrap, but can use Bourbon or Compass for library helpers
+* you can use a gridframework, mentioned above
+
+Rails Layouts, Views & Partials
+* use layout/application.html.erb for shared HTML
+* You can change the layout for one-off pages
+* use partials for reusable components and code organization (ie. callouts, forms, nag, etc)
+* give <body> CSS classes with controller and action name: leaves you free to make changes more easily (put method for element_nestedelement in helper file)
