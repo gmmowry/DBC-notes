@@ -24,14 +24,16 @@ Most of the time, TDD is referring to unit testing. The class you are testing is
  ```
 
  * What are the kinds of doubles?
-  * Dummy (placeholder, don't really care what it does because it just needs to exist, don't care about missing method bodies), Stub (placeholder but we do care about what it does, but it usually returns canned responses), Spies (like a stub, but is used to maintain state and make assertions), Fake (like a stub, but cannot be used for production because it usually contains a shortcut)
- * Why use a double?
+  * Dummy (placeholder, don't really care what it does because it just needs to exist, don't care about missing method bodies)
+  * Stub (placeholder but we do care about what it does, but it usually returns canned responses)
+  * Spies (like a stub, but is used to maintain state and make assertions)
+  * Fake (like a stub, but cannot be used for production because it usually contains a shortcut)
  * What is a Mock?  help control the context in a code example by letting you set the known return values, fake implementations of methods, and even set expectations that specific messages are received by an object. You can do these things on test doubles or you can do them on objects that are a part of your system. 
  Still a double, but while the other kinds of doubles build upon each other, mocks are different. All these test doubles before handle assertions on state but mocks make assertions on behavior. Mocks say that when you call a method with this parameter, and if you don't, there's an error.
  * Three phases of Mocks
- Creating the instance
- Defining the behaviour
- Asserting the calls
+  * Creating the instance
+  * Defining the behaviour
+  * Asserting the calls
 
  Must call 'verify' at the end - this is the key differentiator between mocks and other doubles
 
@@ -41,8 +43,7 @@ Most of the time, TDD is referring to unit testing. The class you are testing is
  verify(fooMock, times(2)).bar();
  ```
  	
- * What is the difference?
- * Why use a mock? when you want to handle state and behavior at the same time! 
+* Why use a mock? when you want to handle state and behavior at the same time! 
 
 
 Example time! Transfer class that handles transfers between two accounts, source and destination. Source and Destination are our Collaborators. 
