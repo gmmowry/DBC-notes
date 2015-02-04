@@ -131,3 +131,9 @@ Color
 Visual Styleguide
 * Living, breathing styleguide (aka HTML and CSS from real site)
 * Replacement for photoshop or images from designer
+
+Process for group project:
+* Wireframe: layout, organization, boxes of content, alignment, either use pen&paper or online tool
+* create a visual style guide
+* Code style guide in Rails: app/assets/stylesheets/base (base.scss and _colors.scss)
+* Add page specific styles in page specific SCSS file
