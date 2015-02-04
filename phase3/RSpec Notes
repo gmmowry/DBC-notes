@@ -1,0 +1,63 @@
+RSpec Notes
+
+Q&A:
+
+1. What is the difference between 'let' and 'before'?
+
+let (:car) { Car.new("Toyota") }
+
+before do
+  @car = Car.new("Toyota")
+end
+
+'before' - initializes the task every single time before a test, under the assumption that you'll need it
+'let' - does not initialize it every time, because you're not actually looking at the variable itself in a specific test. this can cause problems if you need to access Car.all or something similar.  To deter this, you can use 'let!' to create it every time, but only use it when you need it. 
+
+
+'let' is generally the preferred way to create a variable in your Rspec, but it might not necessarily be the best way
+
+'context' : you normally use with "when..." and often contains a before statement; to organize based on different scenarios; tied into scope --> if a 'before' is nested within a 'context', its only happening in that block; 
+
+context "when task is complete" do
+	before do
+		task.complete!
+	end
+
+	it "returns true" do
+		expect(task.complete?).to be_true
+	end
+end
+
+'context' and 'describe' are functionally the same, but syntantically different. 
+
+“context” is just a alias method of “describe”, meaning that there is no functional difference between these two methods. However, there is a contextual difference that’ll help to make your tests more understandable by using both of them. The purpose of “describe” is to wrap a set of tests against one functionality while “context” is to wrap a set of tests against one functionality under the same state.
+
+context = set of tests wrapped together based on the same state
+describe = set of tests wrapped together
+
+Any method in Ruby with a '?' at the end, you can write a method that evaluates to: 
+method: task.complete?
+rspec expectation: expect(task).to be_complete
+
+
+2. Raise Error
+
+it "raises an error if passed an argument" do
+	expect {
+		task.complete?(false)
+	}.to raise_error(Argument Error)
+end
+
+
+3. Stubs and Mocks
+
+context "when task is complete" do
+	before do
+		puts "completing task"
+		task.stub(complete?: true)
+	end
+end
+
+this would be dumb since it would always evaluate to true, but this is scoped only to where its being called before
+
+ 
