@@ -20,7 +20,8 @@ Usability
 
 Design Matters
 * Most design thoughts are based on visceral reactions --> we want neutral if not positive
-* Aesthetics:
+* Aesthetics
+
 | Classical | Expressive |
 |-----------|-------------|
 | Order | Originality |
