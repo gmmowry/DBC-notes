@@ -119,4 +119,8 @@ end
 |
 
 
+# Helpers
+
+Helpers are ONLY for views
+
 
