@@ -89,7 +89,7 @@ Rails 3 v Rails 4
 | Rails 3 | Rails 4 |
 | ---------|-----------|
 | mass assignment | strong parameters |
-| ```ruby
+|
 class User
 	attr_accessible :name, :admin
 end
@@ -101,9 +101,8 @@ class UserController <AR::Base
 			params.delete[:admin]
 		end
 	user.update_attributes
-end ```
+end
 | 
-```ruby
 class UserController
 	def update
 		user = User.find[:id]
@@ -115,7 +114,6 @@ class UserController
 		p
 	end
 end
-```
 |
 
 
@@ -135,3 +133,15 @@ helper_method :current_user
 
 end
 ```
+
+```ruby
+module PostHelper
+
+def vote_count
+@post.votes.count
+end
+
+end
+```
+
+<span> <%= vote_count %> </span>
