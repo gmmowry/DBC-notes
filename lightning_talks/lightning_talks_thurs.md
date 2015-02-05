@@ -145,3 +145,58 @@ end
 ```
 
 <span> <%= vote_count %> </span>
+
+
+# Nested Forms
+
+<%= form_for @question do |f| %>
+	<%= f.text.field :body %>
+	<%= fields_for @question.comments do |cf| %>
+		<%= cf.text_field :body %>
+	<%end%>
+<%end%>
+
+```ruby
+{ post: { body: "blah",
+		comments: [ {body: "comment1", body: "comment2"}]
+	}
+}
+
+```
+
+OLD WAY
+```ruby
+class QuestionsController
+
+def create
+	q = Question.new(body: params[:question][:body])
+	params[:question][:comments].each do |c|
+		q.comments.create(c)
+	end
+	q.save
+end
+```
+NEW WAY
+```ruby
+class Question
+
+	has_many :comments
+	accepts_nested_attributes_for :comments
+
+end
+
+class QuestionsController
+	def create
+		q = Question.new(question_params)
+	end
+
+	private
+
+	def question_params
+		params.require[:question]
+			permit(:body).permit(:comments)
+		end
+	end
+end
+```
+
