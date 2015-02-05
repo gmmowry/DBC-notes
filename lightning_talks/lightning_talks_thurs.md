@@ -89,7 +89,8 @@ Rails 3 v Rails 4
 | Rails 3 | Rails 4 |
 | ---------|-----------|
 | mass assignment | strong parameters |
-|
+Rails 3
+```ruby
 class User
 	attr_accessible :name, :admin
 end
@@ -102,7 +103,9 @@ class UserController <AR::Base
 		end
 	user.update_attributes
 end
-| 
+```
+Rails 4
+```ruby 
 class UserController
 	def update
 		user = User.find[:id]
@@ -114,8 +117,7 @@ class UserController
 		p
 	end
 end
-|
-
+```
 
 # Helpers
 
@@ -199,4 +201,28 @@ class QuestionsController
 	end
 end
 ```
+Routes
 
+```ruby
+resources :question do
+	resources :comments
+end
+```
+This creates the nested comment/question routes.
+
+```ruby
+CommentsController
+
+	#one way (easier)
+	def create
+		question = Question.find(params[:q_id])
+		q.comments.create(params)
+	end
+
+	#second way
+	def create
+		Comment.create(
+			comment_params.merge{question_id: params[:q_id]})
+	end
+end
+```
