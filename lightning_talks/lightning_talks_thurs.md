@@ -34,8 +34,8 @@ private
 	end
 
 end
-
 ```
+
 * Gem StrongParameters
 * The issue is privileges like admin vs regular user
 * new way to put it in Rails is to say params.permit(())
@@ -124,3 +124,14 @@ end
 Helpers are ONLY for views
 
 
+current_user
+```ruby
+AppController
+
+def current_user
+end
+
+helper_method :current_user
+
+end
+```
